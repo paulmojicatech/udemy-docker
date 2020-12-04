@@ -1,0 +1,13 @@
+# create centos container
+docker container run  -it --rm centos:7 bash
+# get curl in centos bash
+yum update curl
+# check curl version
+curl --version
+
+# create ubuntu container
+docker container run ubuntu:14.04 bash
+# get curl in ubuntu bash
+apt-get update && apt-get install -y curl
+# check curl version
+curl --version

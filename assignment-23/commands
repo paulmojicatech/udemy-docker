@@ -1,0 +1,12 @@
+# start mysql
+docker container run -d -p 3306:3306 --name db -e MYSQL_RANDOM_ROOT_PASSWORD=yes mysql
+
+# look for password
+docker logs b9
+
+# start httpd
+docker container run -d --name web-server -p 8080:80 httpd
+
+#start nginx
+docker container run -d --name proxy -p 80:80 nginx
+

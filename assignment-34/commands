@@ -1,0 +1,5 @@
+# create new virtual network
+
+# create elasticsearch:2 container
+
+# use --network-alias search command
