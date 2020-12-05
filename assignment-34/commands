@@ -1,5 +1,26 @@
 # create new virtual network
+docker network create my-assignment-34-network
+
+# lookup networks
+docker network ls
+
+# inspect created network
+docker network inspect my-assignment-34-network
 
 # create elasticsearch:2 container
+docker container run --name elastic-search-1 --net my-assignment-34-network --net-alias search -d elasticsearch:2
+docker container run --name elastic-search-2 --net my-assignment-34-network --net-alias search -d elasticsearch:2
 
-# use --network-alias search command
+# inspect updated network
+docker network inspect my-assignment-34-network
+
+# create new alpine container in network, run integrated terminal and remove after exit
+docker container run --rm -it --net my-assignment-34-network alpine
+
+# run nslookup
+nslookup elastic-search-1
+nslookup elastic-search-2
+
+# create docker container in network remove after exit, run curl for search:9200.  Keep running command to see there
+# are 2 containers taking turns returning the search command 
+docker container run --rm --net my-assignment-34-network centos curl -s search:9200
